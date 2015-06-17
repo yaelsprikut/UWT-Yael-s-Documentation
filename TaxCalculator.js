@@ -113,8 +113,9 @@ taxCalculator = {
 	message : function(floatInt){
 		// compare a floating point value to ranges and return a message
 		var amount = parseFloat(floatInt);
-		
-		// always return defaul message for NaN or negative values, I don't like to return undefined.
+		//if (undefined !== theHref && theHref.length)
+			//(amount <= 0 || floatInt.length === 0)
+		// always return default message for NaN or negative values, I don't like to return undefined.
 		if(amount <= 0 || floatInt.length === 0){	
 			return taxCalculator.model.data[0]['message'];
 		}

@@ -18,7 +18,7 @@ impactStatment = {
 		$('#impactStatment').html(uiElement);
 	},
 	/*
-	* Add updae UI with savings total
+	* Add update UI with savings total
 	*/
 	updateSavings : function(dollarAmount){
 		switch(dollarAmount){
@@ -31,7 +31,7 @@ impactStatment = {
 		}
 	},
 	/*
-	* Add updae UI with message
+	* Add update UI with message
 	*/
 	updateStatment : function(message){
 		$('.impactMessage').text(message);
@@ -61,7 +61,7 @@ impactStatment = {
 	calculate : function(amount){		
 		
 		var needle = parseFloat(amount);
-		// do not retuen anything other than float as a string
+		// do not return anything other than float as a string
 		switch(isNaN(parseFloat(amount)))
 		{
 			case true :
@@ -78,6 +78,26 @@ impactStatment = {
 	message : function(floatInt){
 		// compare a floating point value to ranges and return a message
 		var amount = parseFloat(floatInt);
+
+		//$(".currencySymbol").css( "font-size", "20px" );
+		//increase or decrease the size of the number YS
+
+		 if(floatInt.length > 2 && floatInt.length <= 4){
+			$(".currencySymbol").css( "font-size", "35px" );
+			$(".impactAmount").css( "font-size", "35px" );
+			$(".taxSavings").css( "font-size", "35px" );
+			
+		 }else if(floatInt.length >= 5){
+			$(".currencySymbol").css( "font-size", "25px" );
+			$(".impactAmount").css( "font-size", "25px" ); 
+			$(".taxSavings").css( "font-size", "25px" );
+		 }else{
+			 $(".currencySymbol").css( "font-size", "45px" );
+			 $(".impactAmount").css( "font-size", "45px" );
+			 $(".taxSavings").css( "font-size", "45px" );
+		 }
+
+		
 		
 		// always return default message for NaN or negative values, I don't like to return undefined.
 		if(amount <= 0 || floatInt.length == 0){	
@@ -89,7 +109,7 @@ impactStatment = {
 			for(var i = 0; i < impactStatment.model.data.length; i++){
 						
 			var max = parseFloat( impactStatment.model.data[i]['rangeMax'] );
-		    var min = parseFloat( impactStatment.model.data[i]['rangeMin'] );
+		    var min = parseFloat( impactStatment.model.data[i]['rangeMin'] );			
 			
 			// compare floating point value to range min and max
 			if( amount >= min && amount <= max ){

@@ -23,12 +23,12 @@ BBI = {
 		bbis: {
 			pageLoad: function() {},
 			paneRefresh: function() {
-				BBI.UWT.bbis.administration.fixAdminMenuPos();
-				BBI.UWT.bbis.foundation.overrideFoundation();
-				BBI.UWT.bbis.foundation.fixFoundation();
-				BBI.UWT.bbis.foundation.orbitSlideshow();
+				// BBI.UWT.bbis.administration.fixAdminMenuPos(); Fix positioning of the part menus
+				// BBI.UWT.bbis.foundation.overrideFoundation(); Add missing dom elms
+				// BBI.UWT.bbis.foundation.fixFoundation(); Add missing dom elms
+				// BBI.UWT.bbis.foundation.orbitSlideshow(); make an orbit slideshow
 				BBI.UWT.bbis.foundation.FoundationAccordion();
-				BBI.UWT.bbis.parts.emailSignup();
+				// BBI.UWT.bbis.parts.emailSignup();
 				BBI.UWT.bbis.parts.quickSearch();
 				BBI.UWT.bbis.parts.donationForm.init();
 				BBI.UWT.bbis.parts.showPartTitle();
@@ -222,6 +222,7 @@ BBI = {
 							$('label[for$="DonationCapture1_AddressCtl_dd_StateUS"]').closest('tr').addClass('hasRequired'); //this changes the state class 						
 							$('span.DonationFormTable_DonationPanel_SymbolLabel').closest('tr').addClass('hasRequired');//this changes the amount class
 							$('label[for$="DonationCapture1_cboMonth"]').closest('tr').removeClass('DonationCaptureRequiredFieldMarker');
+							//document.getElementById("divModalPage").css( "position", "fixed" );
 			
 							//$('label[for$="DonationCapture1_cboMonth"]').closest('tr').addClass('hasRequiredNarrow');
 							//$('td.DonationCaptureSelectListNarrow').closest('tr').addClass('hasRequired');

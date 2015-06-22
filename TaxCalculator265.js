@@ -115,8 +115,8 @@ taxCalculator = {
 		var amount = parseFloat(floatInt);
 		//if (undefined !== theHref && theHref.length)
 			//(amount <= 0 || floatInt.length === 0)
-		// always return default message for NaN or negative values, I don't like to return undefined.
 		if(amount <= 0 || floatInt.length === 0){	
+		// always return default message for NaN or negative values, I don't like to return undefined.
 			return taxCalculator.model.data[0]['message'];
 		}
 		else{

@@ -72,7 +72,7 @@ meta.foundation-mq-xxlarge {
 *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;}
+  box-sizing: border-box; }
 
 html,
 body {
@@ -87,7 +87,7 @@ body {
   font-weight: normal;
   font-style: normal;
   line-height: 1;
-  /* position: relative; yaelsprikut*/
+  position: relative;
   cursor: default; }
 
 a:hover {
@@ -3973,13 +3973,9 @@ table {
     display: table-cell;
     line-height: 1.125rem; }
 
-/* Standard Forms (fixed Card Security Window) yaelsprikut*/
+/* Standard Forms */
 form {
-  /* margin: 0 0 50rem;
-  margin-bottom:35rem;  cannot fix card security without moving the footer*/
-  margin: 0 0 1rem; 
-  
-  }
+  margin: 0 0 1rem; }
 
 /* Using forms within rows, we need to set some defaults */
 form .row .row {
@@ -4011,7 +4007,6 @@ label {
   display: block;
   font-weight: normal;
   margin-bottom: 0.5rem;
-  width:100%;
   /* Styles for required inputs */ }
   label.right {
     float: none;
@@ -5327,7 +5322,6 @@ table.SearchTable tr.SearchOddRowStyle td.BBSearchDescriptionStyle {
   border-collapse: collapse;
   border:0;
   width:100%;
-
 }
 .DonationFormTable table {
   margin-bottom: 0;
@@ -5391,15 +5385,9 @@ table.SearchTable tr.SearchOddRowStyle td.BBSearchDescriptionStyle {
   font-size:0.825rem;
 }
 /*Mandatory field indicator*/
-.DonationFormTable .BBFormRequiredFieldMarker, .DonationFormTable .DonationRequiredFieldMarker, .DonationFormTable .DonationCaptureRequiredFieldMarker td:first-child:after{
-//display:none;
-//
-
-//content: 'Required field';
-//font-size: 70%;  
-//vertical-align: top;  
-color:#da291c; /*yaelsprikut*/
-
+.DonationFormTable .BBFormRequiredFieldMarker, .DonationFormTable .DonationRequiredFieldMarker, .DonationFormTable .DonationCaptureRequiredFieldMarker {
+  vertical-align:top;
+  color:#da291c;
 }
 /*Align all fields and labels to top*/
 .DonationFormTable .DonationFieldControlCell td, 
@@ -5449,7 +5437,6 @@ color:#da291c; /*yaelsprikut*/
   -webkit-border-radius: 0.4rem; 
   -moz-border-radius: 0.4rem; 
   border-radius: 0.4rem;
- 
 }
 /*Style the credit card expiration select fields*/
 .DonationFormTable .sDonationCaptureFieldControlCell table {
@@ -5533,7 +5520,6 @@ text-align:left;
 }
 input.BBFormTextbox {
   border-radius:5px;
-  /* width:100%; */ /*yaelsprikut*/
 }
 .BBFormGroup {
   padding-left:0.7rem;
@@ -5552,17 +5538,8 @@ input.BBFormTextbox {
   -moz-border-radius: 0.5rem; 
   border-radius:  0.5rem;
   position:relative;
-  behavior: url(pie/PIE.htc);
+  behavior: url(pie/PIE.htc); 
 }
-
-/* change color on disabled yaelsprikut*/
-.DonationButtonCell input.DonationSubmitButton:active,
-.DonationButtonCell input.DonationSubmitButton:disabled{ 
-   background-color: #3c6406;
- 
- }
-
-
 .DonationValidationSummary {
   border:1px solid #dddddd;
   font-size:0.9rem;
@@ -5634,13 +5611,11 @@ a.BBLinkHelpIcon {
   /*Add vertical space between the credit card fields*/
   .DonationFormTable select[id$="cboMonth"] {
     margin-bottom:0.5rem;
-	margin-left: 0rem;
   }  
     /*Add vertical space above the Billing Info header*/
   .DonationFormTable select[id$="ddlSources"] {
     margin-bottom:0.5rem;    
   }
-  
   /* hide default required fieldmarker */
   tr.hasRequired td.DonationRequiredFieldMarker, tr.hasRequired td.DonationCaptureRequiredFieldMarker {
     display: none;
@@ -5648,26 +5623,12 @@ a.BBLinkHelpIcon {
   tr.hasRequired span.DonationRequiredFieldMarker {
     display: none;
   }
-  /*Add required fieldmarker to labels -- edit: small version YS */
-  tr.hasRequired  td:first-child:after{
-    content:'Required field';
-    font-size: 80%;
-    display: table-row-group;
+  /*Add required fieldmarker to labels*/
+  tr.hasRequired td:first-child:before{
+    content:'*';
+    display: inline;
     color:#da291c;
   }
-  
-   tr.hasRequiredNarrow  td:first-child:before{
-    content:'Required field';
-    font-size: 70%;
-    vertical-align:top;
-    color:#da291c;
-  }
-
-/*Remove required fieldmarker from State field YS */
-   tr.hasRequired span.DonationCaptureRequiredFieldMarker{
-	display: none;
-}
-
   /*Remove required fieldmarker from credit card month field*/
   tr.hasRequired td table td:first-child:before{
       content:'';
@@ -5695,25 +5656,23 @@ a.BBLinkHelpIcon {
   -moz-border-radius-bottomright: 13px;
   border-bottom-right-radius: 13px;
   /* Structure */
-  /*height: 245px;*/
+  height: 245px;
   padding:23px;
   /*width:14rem;  */ 
-  width:99%; 
-  margin-top: -50px;  
+  width:99%;    
 }
 #impactStatment .impactAmountContainer{
   color: #47b1e3; 
   font-size: 3.5rem;
   font-weight: bold;
   word-wrap: break-word;
-  margin-top: 10px; /*yaelsprikut*/
 }
 #impactStatment .impactHeading, #impactStatment .impactMessage{
   color: #f8ffff;
   padding-top:15px;
 }
 #impactStatment .impactHeading{
-  font-size: 1.7rem; /*yaelsprikut*/
+  font-size: 2rem;
 }
 /*Changes to Impact Statement for small devices*/
 @media screen and  /*!YUI Compressor*/  (max-width: 650px) {
@@ -5873,11 +5832,6 @@ table[id*="tblMain"].EventTable {
   border-radius:  0.5rem;
   cursor:pointer;
 }
-/* change color on disabled yaelsprikut*/
-.EventTable table[id$="Wizard1"] table td input.BBFormSubmitButton:active,
-.EventTable table[id$="Wizard1"] table td input.BBFormSubmitButton :disabled{
-	background-color: #854a00;
-}
 /*Right-align the Next buttons*/
 .landingcontent table.buttonsTable {
   width:auto;
@@ -5938,7 +5892,6 @@ table[id*="tblMain"].EventTable {
 .EventTable table[id*="dgAttendeesSummary2"] td
  {
   padding-bottom:0.5rem;
-  background-color: white; /* grey border gone yaelsprikut*/
 }
 /*Increase space below event name in summary page*/ 
 .EventTable tr.BBListEvenRowStyle td.EventItemRegistrantsHeader {
@@ -5989,7 +5942,7 @@ table[id*="tblMain"].EventTable {
   display:block;
   position: relative;
   margin-top:1rem;
-  margin-bottom:2rem; /*event padding yaelsprikut*/
+  margin-bottom:1rem;
 }
 .EventTable .BBListingHeading, .EventTable .BBFormTable {
     border: 0pt;
@@ -6019,7 +5972,7 @@ table[id*="tblMain"].EventTable {
 }
 /*Move the mandatory asterisks up*/
 .EventTable .BBFormRequiredFieldMarker {
- display:inline;
+  vertical-align:top;
 }
 /*Add space under the amount in Step 3*/
 .EventTable tr[id$="DonationCapture1_trAmount"] td.BBFieldCaption,
@@ -6082,7 +6035,7 @@ table[id*="tblMain"].EventTable {
   .EventTable .EventItemRegistrantSelectList,
   .EventTable .BBFormTextbox,
   .EventTable .BBFormTextArea {
-    width: 80%; /*yaelsprikut*/
+    width: 80%;
   }  
   /*Step 2 - Increase space between Individual Attendees and price*/  
   .EventTable .EventItemRegistrationControlCellPrice span {
@@ -6094,9 +6047,6 @@ table[id*="tblMain"].EventTable {
     text-align:left;
   }
 }
-
-/*insert new size here yaelsprikut*/
-
 
 /*Changes to Events form for phones*/
 @media(max-width: 480px) {
@@ -6169,15 +6119,13 @@ table[id*="tblMain"].EventTable {
   .EventTable .EventAttendeesOverallTotal [id$="dgAttendeesSummary_lblEventTotal"]:before{
   content:'Total:\0020';
   display: inline;
-
   }
   .EventTable .EventAttendeesCurrent tbody tr:first-child td:first-child{
-    display: none;
+  display: none;
   }
   /*Remove border from table in Step 3*/
   .EventTable table[id$="Wizard1"], table[id$="Wizard1"] table { 
-	  border:0;
-      background-color:white; /*remove grey padding yaelsprikut*/
+  border:0;
   }  
   /*Prevent default iOS button styling from overriding your button styles*/
   .EventTable table[id$="Wizard1"] table td input.BBFormSubmitButton {  
@@ -6322,8 +6270,7 @@ h2.red {
   font-size:1.3rem;
   font-weight:bold;
 }
-/* Linda's change yaelsprikut*/
-h2.yellow-background, h2.darkblue-background, h2.blue-background, h2.red-background, h2.green-background {
+h2.yellow-background, h2.darkblue-background, h2.blue-background, h2.red-background {
   text-transform: uppercase;
   color:#fff;
   font-size:1.2rem;
@@ -6333,15 +6280,9 @@ h2.yellow-background, h2.darkblue-background, h2.blue-background, h2.red-backgro
   -webkit-border-radius: 0 0 10px 0; 
   -moz-border-radius: 0 0 10px 0; 
   border-radius: 0 0 10px 0; 
-  position:relative;/*Needed for PIE to work. See: 
-http://css3pie.com/documentation/known-issues/*/
+  position:relative;/*Needed for PIE to work. See: http://css3pie.com/documentation/known-issues/*/
   behavior: url(pie/PIE.htc);
 }
-/* Linda's change yaelsprikut*/
-h2.green-background {
-  background-color:#64a70b;
-}
-
 h2.yellow-background {
   background-color:#eaaa00;
 }
@@ -7193,7 +7134,7 @@ a#twooneone {
   float:right;
 }
 #smallmenu .donatebtncolumn p  a { 
-  font-size:0.84rem; /* doesnt break donate button yaelsprikut*/
+  font-size:0.9rem;
   color:#fff;
   text-transform: uppercase;
 }

@@ -23,10 +23,11 @@ BBI = {
 		bbis: {
 			pageLoad: function() {},
 			paneRefresh: function() {
-				// BBI.UWT.bbis.administration.fixAdminMenuPos(); Fix positioning of the part menus
-				// BBI.UWT.bbis.foundation.overrideFoundation(); Add missing dom elms
-				// BBI.UWT.bbis.foundation.fixFoundation(); Add missing dom elms
-				// BBI.UWT.bbis.foundation.orbitSlideshow(); make an orbit slideshow
+				BBI.UWT.bbis.createFooter();
+				//BBI.UWT.bbis.administration.fixAdminMenuPos(); 
+				BBI.UWT.bbis.foundation.overrideFoundation(); 
+				BBI.UWT.bbis.foundation.fixFoundation(); 
+				BBI.UWT.bbis.foundation.orbitSlideshow(); 
 				BBI.UWT.bbis.foundation.FoundationAccordion();
 				// BBI.UWT.bbis.parts.emailSignup();
 				BBI.UWT.bbis.parts.quickSearch();
@@ -35,21 +36,23 @@ BBI = {
 				BBI.UWT.bbis.parts.eventRegistration();
 				BBI.UWT.bbis.parts.documents();
 				BBI.UWT.bbis.smartMenus();
-				BBI.UWT.bbis.clone.sidebar();
+				BBI.UWT.bbis.clone.sidebar();				
 			},
-			parts: {
-				// Fix positioning of the part menus
-				timeStamp: function() {
-					$('div[id *= "_panelPopup"]').appendTo('body');
-					$('div[id *= "_designPaneCloak"]').css({
-						"top": "0px",
-						"left": "0px"
-					});
-					$('.DesignPane').css("position", "relative");
-				}
+			createFooter: function() {
+				//alert("Hello! createFooter works!");
+				var scripts = document.getElementsByTagName("script");
+				//console.log(scripts);
+				//var footer = document.createElement("footer");
+				//$('<div>footer</div>').appendTo('body');
+				//console.log(footer);
+				//$('body').append(footer);
+				//$('html').append(footer);
+				//$( ".bb_mainMenu" ).remove();	
+				
 			},
 			administration: {
 				// Fix positioning of the part menus
+				//this function seems to position the part menus in the corner of the webpage because it specifies the position as 0px for both top and left 
 				fixAdminMenuPos: function() {
 					$('div[id *= "_panelPopup"]').appendTo('body');
 					$('div[id *= "_designPaneCloak"]').css({
@@ -127,6 +130,10 @@ BBI = {
 				},
 				// make an Accordion
 				FoundationAccordion: function() {
+					$(".selected").removeAttr("href"); //this prevents the page for re-loading 
+					//$("a.selected.has-submenu").attr("href", "");
+					//$("a.selected.has-submenu.highlighted").attr("href", "");
+
 					
 					$(document).foundation({
 					  accordion: {
@@ -137,6 +144,7 @@ BBI = {
 					    // allow accordion panels to be closed by clicking on their headers
 					    // setting to false only closes accordion panels when another is opened
 					    toggleable: true
+						
 					  }
 					});
 
@@ -210,7 +218,6 @@ BBI = {
 							// what to run
 							BBI.UWT.bbis.parts.donationForm.requiredFieldMarkers();
 							BBI.UWT.bbis.parts.donationForm.olderCustomizaionScript();
-							BBI.UWT.bbis.parts.donationForm.disableDonateButton();
 						}
 					},
 					// add for class for required fields makers, used with small device media query
@@ -291,10 +298,6 @@ BBI = {
 							$('donationFormLongText').css('display', 'block');
 						}
 					},
-					
-					disableDonateButton: function(){
-								//$('td.DonationButtonCell').closest('input').removeClass('DonationSubmitButton');
-							}
 				},
 				// modify the event reg
 				eventRegistration: function() {
@@ -311,11 +314,10 @@ BBI = {
 					}
 				},
 				emailSignup: function(){
-					if($('.BBSequenceMapContentContainer').length >= 1){
-						//$('div.bbformbuilder-element-block').closest('input').removeClass();
-						//$('div.bbformbuilder-input-container').closest('input').removeClass();
-						//$('div.bbformbuilder-element-block').closest('input').removeClass();
-						document.getElementById("S1_EMAIL_EmailAddress_input_cont").removeClass("bbformbuilder-input-container bbformbuilder-float-none");
+					if($('.bbformbuilder-form-part').length >= 1){
+						if ($(this).hasClass('x-form-text')) {
+								$(this).removeClass('x-form-text');
+							}
 						
 					}
 				},

@@ -20,6 +20,7 @@
 5. TinyMCE specific fixes to Foundation show/hide styles for BBIS
 6. Annual Report microsite styles
 
+Modified by: Yael Sprikut
 -----------------------------------*/ 
 
 /*-----------1. Fonts-----------*/
@@ -1519,7 +1520,7 @@ meta.foundation-mq-topbar {
     color: white; }
   .no-js .top-bar-section .has-dropdown:hover > .dropdown {
     display: block; } }
-.breadcrumbs {
+/* .breadcrumbs {
   display: block;
   padding: 0.5625rem 0.875rem 0.5625rem;
   overflow: hidden;
@@ -1567,9 +1568,9 @@ meta.foundation-mq-topbar {
       top: 1px; }
     .breadcrumbs > *:first-child:before {
       content: " ";
-      margin: 0; }
+      margin: 0; } coded out by yaelsprikut*/
 
-.alert-box {
+/* .alert-box {
   border-style: solid;
   border-width: 1px;
   display: block;
@@ -1618,7 +1619,7 @@ meta.foundation-mq-topbar {
   .alert-box.info {
     background-color: #a0d3e8;
     border-color: #74bfdd;
-    color: #4f4f4f; }
+    color: #4f4f4f; } coded out by yaelsprikut */
 
 .inline-list {
   margin: 0 auto 1.0625rem auto;
@@ -3433,12 +3434,12 @@ blockquote p {
       .sub-nav li.active a:hover {
         background: #0085b1; }
 
-/* Foundation Joyride */
-.joyride-list {
-  display: none; }
+/* Foundation Joyride coded out by yaelsprikut*/
+/* .joyride-list {
+  display: none; } */
 
 /* Default styles for the container */
-.joyride-tip-guide {
+/* .joyride-tip-guide {
   display: none;
   position: absolute;
   background: #333333;
@@ -3459,10 +3460,10 @@ blockquote p {
   width: 100%;
   padding: 1.125rem 1.25rem 1.5rem; }
   .joyride-content-wrapper .button {
-    margin-bottom: 0 !important; }
+    margin-bottom: 0 !important; } */
 
 /* Add a little css triangle pip, older browser just miss out on the fanciness of it */
-.joyride-tip-guide .joyride-nub {
+/* .joyride-tip-guide .joyride-nub {
   display: block;
   position: absolute;
   left: 22px;
@@ -3486,10 +3487,10 @@ blockquote p {
   .joyride-tip-guide .joyride-nub.right {
     right: -20px; }
   .joyride-tip-guide .joyride-nub.left {
-    left: -20px; }
+    left: -20px; } */
 
 /* Typography */
-.joyride-tip-guide h1,
+/* .joyride-tip-guide h1,
 .joyride-tip-guide h2,
 .joyride-tip-guide h3,
 .joyride-tip-guide h4,
@@ -3558,11 +3559,11 @@ blockquote p {
   position: absolute;
   z-index: 9999;
   top: 0;
-  left: 0; }
+  left: 0; } */
 
 /* Styles for screens that are at least 768px; */
 @media only screen and /*!YUI Compressor*/ (min-width: 40.063em) {
-  .joyride-tip-guide {
+/*   .joyride-tip-guide {
     width: 300px;
     left: inherit; }
     .joyride-tip-guide .joyride-nub.bottom {
@@ -3586,7 +3587,7 @@ blockquote p {
       border-bottom-color: transparent !important;
       top: 22px;
       left: -20px;
-      right: auto; } }
+      right: auto; } */ }
 .label {
   font-weight: normal;
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
@@ -8421,6 +8422,7 @@ a.orbit-prev, a.orbit-prev:visited, a.orbit-next, a.orbit-next:visited {
 /*--ACCORDION STYLES--*/
 .accordion-part a, .accordion-part a:hover, .accordion-part a:focus, .accordion-part a:active {
   border-bottom:1px #ddd solid;
+
 }
 /*--END ACCORDION STYLES--*/
 

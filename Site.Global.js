@@ -29,7 +29,7 @@ BBI = {
 				BBI.UWT.bbis.foundation.fixFoundation(); 
 				BBI.UWT.bbis.foundation.orbitSlideshow(); 
 				BBI.UWT.bbis.foundation.FoundationAccordion();
-				// BBI.UWT.bbis.parts.emailSignup();
+				BBI.UWT.bbis.parts.emailSignup();
 				BBI.UWT.bbis.parts.quickSearch();
 				BBI.UWT.bbis.parts.donationForm.init();
 				BBI.UWT.bbis.parts.showPartTitle();
@@ -40,7 +40,7 @@ BBI = {
 			},
 			createFooter: function() {
 				//alert("Hello! createFooter works!");
-				var scripts = document.getElementsByTagName("script");
+				//var scripts = document.getElementsByTagName("script");
 				//console.log(scripts);
 				//var footer = document.createElement("footer");
 				//$('<div>footer</div>').appendTo('body');
@@ -314,12 +314,8 @@ BBI = {
 					}
 				},
 				emailSignup: function(){
-					if($('.bbformbuilder-form-part').length >= 1){
-						if ($(this).hasClass('x-form-text')) {
-								$(this).removeClass('x-form-text');
-							}
-						
-					}
+					//alert("this function runs!");
+					
 				},
 				// modify the quick search part
 				quickSearch: function() {
@@ -329,9 +325,25 @@ BBI = {
 						// Make the quick search look nice!
 						$('.QuickSearchTextbox').attr('placeholder', 'Search');
 						
-						$('input,textarea').focus(function(){
-   							$(this).removeAttr('placeholder');
-							});
+						// if($('input, textarea').focus()){
+							// $(this).removeAttr('placeholder');
+						// } else if ($('input, textarea').blur()){
+							// $(this).attr('placeholder');
+						// }
+							 $('input,textarea').focus(function(){
+   							 $(this).removeAttr('placeholder');
+							 });
+							 //make the placeholder reappear when click away
+							 $('input,textarea').blur(function(){
+   							 $('.QuickSearchTextbox').attr('placeholder', 'Search');
+							 });
+							
+							
+							
+							// $('input,textarea').blur(function(){
+   							// $(this).attr('placeholder');
+							// });
+						
 						$('table.QuickSearchFormTable').attr('cellspacing', '0');
 					}
 				},

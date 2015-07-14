@@ -23,13 +23,12 @@ BBI = {
 		bbis: {
 			pageLoad: function() {},
 			paneRefresh: function() {
-				BBI.UWT.bbis.createFooter();
-				//BBI.UWT.bbis.administration.fixAdminMenuPos(); 
+				//BBI.UWT.bbis.orderQuery();
+				BBI.UWT.bbis.administration.fixAdminMenuPos(); 
 				BBI.UWT.bbis.foundation.overrideFoundation(); 
 				BBI.UWT.bbis.foundation.fixFoundation(); 
 				BBI.UWT.bbis.foundation.orbitSlideshow(); 
 				BBI.UWT.bbis.foundation.FoundationAccordion();
-				BBI.UWT.bbis.parts.emailSignup();
 				BBI.UWT.bbis.parts.quickSearch();
 				BBI.UWT.bbis.parts.donationForm.init();
 				BBI.UWT.bbis.parts.showPartTitle();
@@ -38,28 +37,55 @@ BBI = {
 				BBI.UWT.bbis.smartMenus();
 				BBI.UWT.bbis.clone.sidebar();				
 			},
-			createFooter: function() {
-				//alert("Hello! createFooter works!");
-				//var scripts = document.getElementsByTagName("script");
-				//console.log(scripts);
-				//var footer = document.createElement("footer");
-				//$('<div>footer</div>').appendTo('body');
-				//console.log(footer);
-				//$('body').append(footer);
-				//$('html').append(footer);
-				//$( ".bb_mainMenu" ).remove();	
-				
+			orderQuery: function() {
+				//alert("Hello! orderQuery works!");
+				//get all the search value results and sort them alphabetically
+				var $queryTable = $(".BBDesignationSearchResult").text();
+				//console.log(queryTable);
+		
+				 var $queryTableArray = [];
+					//put all HTML elements into an array
+					 (function(){
+						 var $queryTable = $(".BBDesignationSearchResult");
+						 for (var i = 0; i < $queryTable.length; i++) {
+							 $queryTableArray.push($queryTable[i].innerText + "<br><br>");
+						 }
+					 })();
+					 $queryTableArray.sort();
+					 //sorts the query by last name
+					 function compare(a, b) {
+							var splitA = a.split(" ");
+							var splitB = b.split(" ");
+							var lastA = splitA[splitA.length - 1];
+							var lastB = splitB[splitB.length - 1];
+
+							if (lastA < lastB) return -1;
+							if (lastA > lastB) return 1;
+							return 0;
+						}
+
+						var $sorted = $queryTableArray.sort(compare);
+					  //console.log($sorted);
+					 //console.log($queryTableArray);
+					 $(".BBDesignationSearchResult").remove();
+					 $(".BBDesignationSearchResultContainer").append($queryTableArray);			
+
+	
 			},
 			administration: {
 				// Fix positioning of the part menus
 				//this function seems to position the part menus in the corner of the webpage because it specifies the position as 0px for both top and left 
 				fixAdminMenuPos: function() {
-					$('div[id *= "_panelPopup"]').appendTo('body');
+					//$('div[id *= "_panelPopup"]').appendTo('body');
+					//document.getElementById("pane11_ctl01_panelPopup").remove();
+					$("tr.pane11_ctl01_trInsertAfter").removeAttr(".donatebtn a");
 					$('div[id *= "_designPaneCloak"]').css({
 						"top": "0px",
 						"left": "0px"
 					});
 					$('.DesignPane').css("position", "relative");
+					//$('.DesignPane').addClass("DesignMenuTable");
+					//pane12_ctl01_tbdPartMenu
 				}
 			},
 			clone: {
@@ -130,9 +156,6 @@ BBI = {
 				},
 				// make an Accordion
 				FoundationAccordion: function() {
-					$(".selected").removeAttr("href"); //this prevents the page for re-loading 
-					//$("a.selected.has-submenu").attr("href", "");
-					//$("a.selected.has-submenu.highlighted").attr("href", "");
 
 					
 					$(document).foundation({
@@ -229,12 +252,18 @@ BBI = {
 							$('label[for$="DonationCapture1_AddressCtl_dd_StateUS"]').closest('tr').addClass('hasRequired'); //this changes the state class 						
 							$('span.DonationFormTable_DonationPanel_SymbolLabel').closest('tr').addClass('hasRequired');//this changes the amount class
 							$('label[for$="DonationCapture1_cboMonth"]').closest('tr').removeClass('DonationCaptureRequiredFieldMarker');
-							//document.getElementById("divModalPage").css( "position", "fixed" );
-			
+							if($(window).width() > 1000){
+								//alert("large screen");
+								$('td.DonationFieldControlCell:first-child').attr('width', '300'); //expands the first td in the radio button donation cells yaelsprikut
+							}else{
+								//alert("small screen");
+								$('td.DonationFieldControlCell:first-child').attr('width', '100'); //expands the first td in the radio button donation cells yaelsprikut
+							}
+							$('td.vaBottom').attr('width', '200'); //expands 'other' donation field yaelsprikut
+							
+
 							//$('label[for$="DonationCapture1_cboMonth"]').closest('tr').addClass('hasRequiredNarrow');
-							//$('td.DonationCaptureSelectListNarrow').closest('tr').addClass('hasRequired');
 							//$('td.DonationCaptureFieldControlCell').closest('tr').addClass('hasRequired'); //this causes all the fields to be required but also changes state
-							//$('label[for$="txtAmount"]').closest('tr').addClass('hasRequired');
 						}
 					},
 					// add custom text to donation by passing the text, lable and method. The label text must be an exact match
@@ -313,10 +342,6 @@ BBI = {
 						$('.EventTable .BBFormSubmitButton').parent().closest('table').addClass('buttonsTable');
 					}
 				},
-				emailSignup: function(){
-					//alert("this function runs!");
-					
-				},
 				// modify the quick search part
 				quickSearch: function() {
 					// Do we have a quick serach part on the page?
@@ -325,11 +350,6 @@ BBI = {
 						// Make the quick search look nice!
 						$('.QuickSearchTextbox').attr('placeholder', 'Search');
 						
-						// if($('input, textarea').focus()){
-							// $(this).removeAttr('placeholder');
-						// } else if ($('input, textarea').blur()){
-							// $(this).attr('placeholder');
-						// }
 							 $('input,textarea').focus(function(){
    							 $(this).removeAttr('placeholder');
 							 });
@@ -366,6 +386,7 @@ BBI = {
 				if ($('.main-menu').length >= 1) {
 					$('.main-menu').smartmenus();
 				}
+				$(".selected").removeAttr("href"); //this prevents the page for re-loading 
 				// Trigger click events to show selected menu items (mobile)
 				//$('#menubtn').click( function(){
 				// setTimeout(function(){ $('.smallnav .main-menu li.parent.selected:first a.has-submenu').click();}, 200);

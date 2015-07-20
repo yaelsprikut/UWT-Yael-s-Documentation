@@ -15,7 +15,7 @@ Added Fotorama image slider plugin
 Used in Annual Report microsite  photo essays
 
 EDIT: Yael Sprikut
-Date: June 9, 2015
+Date: July 17, 2015 (Test Environment)
 **********************************************/
 
 BBI = {
@@ -38,7 +38,6 @@ BBI = {
 				BBI.UWT.bbis.clone.sidebar();				
 			},
 			orderQuery: function() {
-				//alert("Hello! orderQuery works!");
 				//get all the search value results and sort them alphabetically
 				var $queryTable = $(".BBDesignationSearchResult").text();
 				//console.log(queryTable);
@@ -76,7 +75,7 @@ BBI = {
 				// Fix positioning of the part menus
 				//this function seems to position the part menus in the corner of the webpage because it specifies the position as 0px for both top and left 
 				fixAdminMenuPos: function() {
-					//$('div[id *= "_panelPopup"]').appendTo('body');
+					$('div[id *= "_panelPopup"]').appendTo('body');
 					//document.getElementById("pane11_ctl01_panelPopup").remove();
 					$("tr.pane11_ctl01_trInsertAfter").removeAttr(".donatebtn a");
 					$('div[id *= "_designPaneCloak"]').css({
@@ -248,18 +247,24 @@ BBI = {
 						// Do we have a donation form part on the page?
 						if ($('.DonationFormTable').length >= 1) {
 							// add a class to all mandatory tr
+							$('td.BBListingHeading').append('<hr class="underline" />');/*block element hr for headings yaelsprikut*/
 							$('td.DonationRequiredFieldMarker, td.DonationCaptureRequiredFieldMarker').closest('tr').addClass('hasRequired');
 							$('label[for$="DonationCapture1_AddressCtl_dd_StateUS"]').closest('tr').addClass('hasRequired'); //this changes the state class 						
 							$('span.DonationFormTable_DonationPanel_SymbolLabel').closest('tr').addClass('hasRequired');//this changes the amount class
 							$('label[for$="DonationCapture1_cboMonth"]').closest('tr').removeClass('DonationCaptureRequiredFieldMarker');
-							if($(window).width() > 1000){
-								//alert("large screen");
-								$('td.DonationFieldControlCell:first-child').attr('width', '300'); //expands the first td in the radio button donation cells yaelsprikut
-							}else{
-								//alert("small screen");
-								$('td.DonationFieldControlCell:first-child').attr('width', '100'); //expands the first td in the radio button donation cells yaelsprikut
-							}
-							$('td.vaBottom').attr('width', '200'); //expands 'other' donation field yaelsprikut
+							$('td.DonationFieldControlCell:first-child').attr('width', '300'); //expands the first td in the radio button donation cells yaelsprikut
+							$('input[id$="PC3975_txtAmount"]').attr('style', 'width: 78px');
+							// if($(window).width() > 1000){
+								// //alert("large screen");
+								// $('td.DonationFieldControlCell:first-child').attr('width', '300'); 
+							// }else{
+								// //alert("small screen");
+								// //$('table[id$="_tblAmount"]').attr('style', 'width:400px');
+								// //$('td.DonationFieldControlCell:first-child').attr('width', '100');		
+							// }
+							//$('td.vaBottom').attr('style', 'width: 200; margin-left: 20px;'); //expands 'other' donation field yaelsprikut
+							//$('table[id$="_tblAmount"]').attr('style', 'width:400px');
+
 							
 
 							//$('label[for$="DonationCapture1_cboMonth"]').closest('tr').addClass('hasRequiredNarrow');
@@ -333,6 +338,8 @@ BBI = {
 					if ($('.EventTable').length >= 1) {
 						// add classes to make styling easy, please (added Required Field YS)
 						// table that contains prev and next buttons
+						$('td.BBListingHeading').append('<hr class="underline" />');/*block element hr for headings yaelsprikut*/
+						$('hr.underline').attr('style', 'position:relative; bottom:30px');
 						$('td.DonationCaptureFieldControlCell, td.DonationCaptureFieldCaption').closest('tr').addClass('hasRequired');
 						$('td.EventItemRegistrantControlCell').closest('tr').addClass('hasRequired');
 						//EventItemRegistrantSelectList
@@ -469,14 +476,7 @@ URI: https://github.com/chuckcarpenter/REM-unit-polyfill
 ---------------------------------------------------
 */	
 document.write('<script src="document.doc?id=20"></script>');
-/*
----------------------------------------------------
-Plugin Name: Fotorama
-Description: jQuery plug-in image slideshow with thumbnails
-URI: http://fotorama.io/
----------------------------------------------------
-*/
-document.write('<script src="document.doc?id=41"></script>');
+
 /*
 ---------------------------------------------------
 Plugin Name: Foundaiton 5 Accordion

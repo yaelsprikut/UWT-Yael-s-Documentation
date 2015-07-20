@@ -5360,8 +5360,8 @@ table.SearchTable tr.SearchOddRowStyle td.BBSearchDescriptionStyle {
 .DonationFormTable .BBListingHeading, .DonationFormTable .BBFormTable {
     border: 0pt;
 }
-/*Draw a line under the section headings*/
-.DonationFormTable .DonationListingHeading span:after, .DonationFormTable .DonationCaptureListingHeading span:after, .DonationFormTable .BBListingHeading span:after {
+/*Draw a line under the section headings commented out by yaelsprikut*/
+/* .DonationFormTable .DonationListingHeading span:after, .DonationFormTable .DonationCaptureListingHeading span:after, .DonationFormTable .BBListingHeading span:after {
   content: '\A ';
   white-space: pre;
   position: absolute;
@@ -5369,7 +5369,7 @@ table.SearchTable tr.SearchOddRowStyle td.BBSearchDescriptionStyle {
   width:100%;
   bottom:-20%;
   border-bottom: 1px solid #54585a;
-}
+} */
 /*Increase space under headings*/
 .DonationFormTable tbody:before {
   content:"\a";
@@ -5428,7 +5428,7 @@ color:#da291c; /*yaelsprikut*/
   padding-left:0.5rem;
 }
 .DonationFormTable label[id$="lblAmountCaption"] {
-  /* margin-top:0.5rem; yaelsprikut*/
+ margin-top:0.4rem;
 }
 .DonationFormTable select.DonationSelectList {
   width:38%;
@@ -5590,6 +5590,14 @@ a.BBLinkHelpIcon {
   cursor:pointer;
 }
 
+@media screen and /*!YUI Compressor*/ (max-width: 400px){
+
+	.DonationFormTable input[type="checkbox"]+label, input[type="radio"]+label{
+	font-size:12.5px;	
+	}
+
+} 
+
 /*Changes to donation form for small devices*/
 @media screen and  /*!YUI Compressor*/  (max-width: 480px) {
   
@@ -5607,7 +5615,12 @@ a.BBLinkHelpIcon {
     width:100%;
 	
   }
-
+  
+  .vaBottom{ /*yaelsprikut makes amount disappear in smallscreen*/
+    position:absolute;
+	bottom:20px;
+  }
+  
   /*Increase width of fields*/
   .DonationFormTable select.DonationSelectList {
   width:100%;
@@ -5681,7 +5694,16 @@ a.BBLinkHelpIcon {
       display: inline;
     }
 
+}/* end of media query*/
+
+@media only screen and /*!YUI Compressor*/ (min-width:640px) and /*!YUI Compressor*/  (max-width: 1000px){
+/* made the donation amount table totally responsive yaelsprikut*/
+.DonationFormTable table[id$="_tblAmount"], table[id$="_tblAmount"] table{
+  width: 400px;
+	}
+
 }
+
 /*END DONATION FORM*/
 
 /*DONATION FORM CUSTOMIZATION - IMPACT STATEMENT*/
@@ -6001,8 +6023,8 @@ table[id*="tblMain"].EventTable {
 .EventTable .BBListingHeading, .EventTable .BBFormTable {
     border: 0pt;
 }
-/*Draw a line under the section headings*/
-.EventTable .BBListingHeading span:after {
+/*Draw a line under the section headings commented out by yaelsprikut*/
+/* .EventTable .BBListingHeading span:after {
   content: '\A ';
   white-space: pre;
   position: absolute;
@@ -6010,7 +6032,7 @@ table[id*="tblMain"].EventTable {
   width:100%;
   bottom:-20%;
   border-bottom: 1px solid #54585a;
-}
+} */
 /*Increase space under headings*/
 .EventTable tbody:before {
  /* content:"\a";
@@ -6127,9 +6149,12 @@ table[id*="tblMain"].EventTable {
     padding-bottom:2rem;
   }
   /* fix for mobile to stop table cut off*/
- /*  .EventTable{ display:block; } yaelsprikut*/
+  /* .EventTable{ display:block; } yaelsprikut*/
   .EventTable tr{display:block;}
   .EventTable td{float:left; clear: both; width: 100%;}
+  /* .DonationFormTable{ display:block; }
+  .DonationFormTable tr{ display:block; } */
+  .DonationFormTable td{float:left; clear: both; width: 100%;}
 
   /* part is in test mode */
   [id*="TestModeWarning"] span{max-width:80%;}
@@ -7343,6 +7368,16 @@ margin-top: 1rem;
   margin-top:0;
 }
 
+hr.underline { 
+  border: solid #000000; 
+  border-width: 1px 0 0; 
+  clear: both; 
+  margin: 22px 0 21px; 
+  height: 0;
+  position: relative;
+  bottom: 20px;
+} /*block element hr for headings yaelsprikut*/
+
 #footer1  {
   padding-top:1rem;
   padding-bottom:1rem;
@@ -8193,9 +8228,9 @@ ul.threecolumn li {
   display:inline;
   padding-right:0.5rem;
 }
-.landingcontent table {
+.landingcontent table { 
   border:0;
-  width:50%;
+  width:100%; /*switched from 50% to line up credit card radio btns yaelsprikut*/
 }
 .landingcontent table.BBFormTable, table.BBDocumentDisplayTable {
   width:100%;

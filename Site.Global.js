@@ -15,7 +15,7 @@ Added Fotorama image slider plugin
 Used in Annual Report microsite  photo essays
 
 EDIT: Yael Sprikut
-Date: July 17, 2015 (Test Environment)
+Date: August 7, 2015 (Test Environment)
 **********************************************/
 
 BBI = {
@@ -24,6 +24,8 @@ BBI = {
 			pageLoad: function() {},
 			paneRefresh: function() {
 				//BBI.UWT.bbis.orderQuery();
+				BBI.UWT.bbis.siteMap();
+				BBI.UWT.bbis.commPreference();
 				BBI.UWT.bbis.administration.fixAdminMenuPos(); 
 				BBI.UWT.bbis.foundation.overrideFoundation(); 
 				BBI.UWT.bbis.foundation.fixFoundation(); 
@@ -37,6 +39,17 @@ BBI = {
 				BBI.UWT.bbis.smartMenus();
 				BBI.UWT.bbis.clone.sidebar();				
 			},
+
+			siteMap: function() {
+				//append Full Menu part to body
+				var $siteMapURL = location.pathname;
+				if ($siteMapURL == '/site-map'){
+					//alert("You are in site map!");
+					$('#landingcontent ul, #landingcontent li').removeClass();
+
+				}
+				
+			},
 			orderQuery: function() {
 				//get all the search value results and sort them alphabetically
 				var $queryTable = $(".BBDesignationSearchResult").text();
@@ -45,7 +58,7 @@ BBI = {
 				 var $queryTableArray = [];
 					//put all HTML elements into an array
 					 (function(){
-						 var $queryTable = $(".BBDesignationSearchResult");
+						 var $queryTable = $(".BBDesignationSearchResult");//this will affect the CSV container part
 						 for (var i = 0; i < $queryTable.length; i++) {
 							 $queryTableArray.push($queryTable[i].innerText + "<br><br>");
 						 }
@@ -71,20 +84,39 @@ BBI = {
 
 	
 			},
+			commPreference: function() {
+				//hide Global Opt Out 
+				$('div[id *= "S1_GLOBALOPTOUTPREFERENCE_commPrefs_cont"]').hide();
+				$('input[id$="S1_GENERALCORRESPONDENCE_commPrefs_rptPrefs_cbOptIn_0"]').attr('style', '-webkit-transform: scale(2)');
+				$('div[id$="header"]').attr('style', 'padding-bottom: 30px; font-weight:bold');
+				
+				//check General checkbox if unchecked
+				if($("#S1_GENERALCORRESPONDENCE_commPrefs_rptPrefs_cbOptIn_0").prop('checked') == false){
+					document.getElementById("S1_GENERALCORRESPONDENCE_commPrefs_rptPrefs_cbOptIn_0").checked = true;
+				}
+				
+			},
 			administration: {
-				// Fix positioning of the part menus
-				//this function seems to position the part menus in the corner of the webpage because it specifies the position as 0px for both top and left 
+				// Fix positioning of the part menus 
 				fixAdminMenuPos: function() {
+					
 					$('div[id *= "_panelPopup"]').appendTo('body');
-					//document.getElementById("pane11_ctl01_panelPopup").remove();
-					$("tr.pane11_ctl01_trInsertAfter").removeAttr(".donatebtn a");
+					//$("tr.pane11_ctl01_trInsertAfter").removeAttr(".donatebtn a");
 					$('div[id *= "_designPaneCloak"]').css({
 						"top": "0px",
 						"left": "0px"
 					});
 					$('.DesignPane').css("position", "relative");
 					//$('.DesignPane').addClass("DesignMenuTable");
-					//pane12_ctl01_tbdPartMenu
+					//pane12_ctl01_tbdPartMenu	
+					
+					/*
+					$('div[id *= "pane18_ctl01_panelPopup"]').appendTo('footer');
+					$('div[id *= "pane19_ctl01_panelPopup"]').appendTo('footer');
+					$('div[id *= "pane20_ctl01_panelPopup"]').appendTo('footer');
+					$('div[id *= "pane21_ctl01_panelPopup"]').appendTo('footer');
+					*/
+					
 				}
 			},
 			clone: {
@@ -254,21 +286,14 @@ BBI = {
 							$('label[for$="DonationCapture1_cboMonth"]').closest('tr').removeClass('DonationCaptureRequiredFieldMarker');
 							$('td.DonationFieldControlCell:first-child').attr('width', '300'); //expands the first td in the radio button donation cells yaelsprikut
 							$('input[id$="PC3975_txtAmount"]').attr('style', 'width: 78px');
-							// if($(window).width() > 1000){
-								// //alert("large screen");
-								// $('td.DonationFieldControlCell:first-child').attr('width', '300'); 
-							// }else{
-								// //alert("small screen");
-								// //$('table[id$="_tblAmount"]').attr('style', 'width:400px');
-								// //$('td.DonationFieldControlCell:first-child').attr('width', '100');		
-							// }
-							//$('td.vaBottom').attr('style', 'width: 200; margin-left: 20px;'); //expands 'other' donation field yaelsprikut
-							//$('table[id$="_tblAmount"]').attr('style', 'width:400px');
-
 							
-
+							//attach new image to security code png
+							var oldSrc = 'images/help-32_1.gif';
+							var newSrc = 'https://test.unitedwaytoronto.org/image/mainwebsite/x_common/logos-and-icons/Question-mark-Icon-2.png';
+							$('img[src="' + oldSrc + '"]').attr('src', newSrc);
+							$('img[src="' + newSrc + '"]').attr('style', 'padding-top: 5px;border: 0;');
+							
 							//$('label[for$="DonationCapture1_cboMonth"]').closest('tr').addClass('hasRequiredNarrow');
-							//$('td.DonationCaptureFieldControlCell').closest('tr').addClass('hasRequired'); //this causes all the fields to be required but also changes state
 						}
 					},
 					// add custom text to donation by passing the text, lable and method. The label text must be an exact match
@@ -347,6 +372,12 @@ BBI = {
 						//DonationCaptureFieldControlCellAmount remove required over the amount 
 						$('td.DonationCaptureFieldControlCellAmount').closest('tr').removeClass('hasRequired');
 						$('.EventTable .BBFormSubmitButton').parent().closest('table').addClass('buttonsTable');
+						
+						//attach new image to security code png
+							var oldSrc = 'images/help-32_1.gif';
+							var newSrc = 'https://test.unitedwaytoronto.org/image/mainwebsite/x_common/logos-and-icons/Question-mark-Icon-2.png';
+							$('img[src="' + oldSrc + '"]').attr('src', newSrc);
+							$('img[src="' + newSrc + '"]').attr('style', 'padding-top: 5px;border: 0;');
 					}
 				},
 				// modify the quick search part
@@ -364,12 +395,6 @@ BBI = {
 							 $('input,textarea').blur(function(){
    							 $('.QuickSearchTextbox').attr('placeholder', 'Search');
 							 });
-							
-							
-							
-							// $('input,textarea').blur(function(){
-   							// $(this).attr('placeholder');
-							// });
 						
 						$('table.QuickSearchFormTable').attr('cellspacing', '0');
 					}

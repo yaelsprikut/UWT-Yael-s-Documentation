@@ -5217,6 +5217,11 @@ th.hide-for-touch {
   position:relative;
   behavior: url(pie/PIE.htc);
 }
+
+.QuickSearchButton:hover{
+  background-color:#434648;
+}
+
 .QuickSearchFormTable td {
   padding:0;
   margin:0;
@@ -5560,13 +5565,20 @@ input.BBFormTextbox {
   behavior: url(pie/PIE.htc);
 }
 
+.DonationButtonCell{
+  text-align: center;/* align the donate button yaelsprikut*/
+}
+
 /* change color on disabled yaelsprikut*/
 .DonationButtonCell input.DonationSubmitButton:active,
 .DonationButtonCell input.DonationSubmitButton:disabled{ 
    background-color: #3c6406;
  
  }
-
+/* change color on hover yaelsprikut*/
+.DonationButtonCell input.DonationSubmitButton:hover{
+  background:#5a9609; 
+ }
 
 .DonationValidationSummary {
   border:1px solid #dddddd;
@@ -5891,6 +5903,24 @@ table[id*="tblMain"].EventTable {
   display:block;
   padding-bottom:1rem;
 }
+/* change styling of comm-pref submit button yaelsprikut*/
+.BBSequenceMapNavigationButton{
+   background-color: #64a70b;
+   color:#fff;
+   text-transform:uppercase;
+   padding: 0.5rem 0 0.5rem 0;
+   width:10rem;
+   border:1px solid #64a70b;
+  -webkit-border-radius: 0.5rem; 
+  -moz-border-radius: 0.5rem; 
+   border-radius:  0.5rem;
+   position:relative;
+   behavior: url(pie/PIE.htc);
+}
+
+.BBSequenceMapNavigationButton:hover{/*yaelsprikut unsubscribe button*/
+  color:#5a9609;
+}
 /*Change look of the submit button*/
 .EventTable table[id$="Wizard1"] table td input.BBFormSubmitButton {  
   background-color: #de7c00;
@@ -5901,6 +5931,10 @@ table[id*="tblMain"].EventTable {
   border:1px solid #fff;
   border-radius:  0.5rem;
   cursor:pointer;
+}
+
+.EventTable table[id$="Wizard1"] table td input.BBFormSubmitButton:hover {/*yaelsprikut*/  
+  background-color: #c76f00;
 }
 /* change color on disabled yaelsprikut*/
 .EventTable table[id$="Wizard1"] table td input.BBFormSubmitButton:active,
@@ -6215,6 +6249,7 @@ table[id*="tblMain"].EventTable {
   .EventTable table[id$="Wizard1"] table td input.BBFormSubmitButton {  
     -webkit-appearance: none;
   }
+  
   /*Step 1 & Step 2: Increase width of ticket name area to accommodate long ticket names*/
   .EventTable td.EventItemRegistrationControlCellDescription,
   .landingcontent table.EventTable table[id*="dgPriceList"] table.w100p {  
@@ -6439,7 +6474,7 @@ a, a:visited {
 }
 a:hover, a:visited:hover, a:active {
   color: #da291c;
-  border-bottom:solid 1px #da291c; 
+/*   border-bottom:solid 1px #da291c; removed PNG red underline yaelsprikut */
 }
 a:focus {
   background:#ddd;
@@ -6912,7 +6947,7 @@ div.smallemail {
   background:#fff;
   width:80%;  
   margin:0 1rem 1rem 1rem;
-  padding:0.5rem;
+  /* padding:0.5rem; subscribe button fix yaelsprikut*/
   -webkit-border-radius: 5px; 
   -moz-border-radius: 5px; 
   border-radius: 5px; 
@@ -7197,7 +7232,7 @@ h3.cntower {
   font-size:0.9rem;
   color:#fff;
   text-decoration:none;
-  margin-left:6.7rem; 
+  /* margin-left:6.7rem; panel popup fix near search yaelsprikut */
   position:relative;
   top:0.2rem;  
 }
@@ -7271,10 +7306,21 @@ div#headerbtns {
   position:relative;
   behavior: url(pie/PIE.htc);
 }
+
+.joinemailbtn: hover{/*yaelsprikut hover effect*/
+  background:#434648;
+}
+
 .joinemailbtn a {
   color:#fff;
   font-size:0.9rem;
 }
+
+.joinemailbtn a:hover {/*yaelsprikut hover effect*/
+  color:white;
+  font-size:0.9rem;
+}
+
 .donatebtn {  
   text-align: center; 
   width: 8.5rem;
@@ -7290,10 +7336,21 @@ div#headerbtns {
   position:relative;
   behavior: url(pie/PIE.htc);
 }
-#headerbtns .donatebtn a {
+
+.donatebtn: hover{ /*yaelsprikut hover effect*/
+  background: #c42419;
+}
+
+/* #headerbtns fixed panel yaelsprikut */.donatebtn a {
   color:#fff;
   font-size:0.9rem;
 }
+
+/* #headerbtns fixed panel yaelsprikut */.donatebtn a:hover {
+  color:white;
+  font-size:0.9rem;
+}
+
 .logo, .logomedium {
   text-align:center;
 }
@@ -8203,11 +8260,11 @@ p.sidebar-logo {
   max-height:50rem;
 }
 .landingcontent .honourroll h2 {
-  background-color:#da291c;
-  border-radius: 0 0 10px;
-  color: #FFFFFF;
-  margin-bottom: 0.5rem;
-  padding: 0 0 0 1rem;
+  color:#da291c;
+  font-size:2rem;
+  clear:both;
+  padding-top:1.5rem;
+
 }
 ul.twocolumn {
   margin-bottom:1rem;

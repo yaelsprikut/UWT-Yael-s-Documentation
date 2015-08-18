@@ -80,7 +80,7 @@ impactStatment = {
 		var amount = parseFloat(floatInt);
 
 		//$(".currencySymbol").css( "font-size", "20px" );
-		//increase or decrease the size of the number YS
+		//increase or decrease the size of the number yaelsprikut
 
 		 if(floatInt.length > 2 && floatInt.length <= 4){
 			$(".currencySymbol").css( "font-size", "35px" );
@@ -193,7 +193,7 @@ impactStatment = {
 	*/
 	view : {
 		/*
-		* Inital method called to after start application and languages added to window object.	
+		* Initial method called to after start application and languages added to window object.	
 		*/
 		init : function(){
 			// Var to hold the fisrt view, only one view.

@@ -15,7 +15,7 @@ Added Fotorama image slider plugin
 Used in Annual Report microsite  photo essays
 
 EDIT: Yael Sprikut
-Date: August 7, 2015 (Test Environment)
+Date: August 20, 2015 (Test Environment)
 **********************************************/
 
 BBI = {
@@ -35,7 +35,7 @@ BBI = {
 				BBI.UWT.bbis.parts.donationForm.init();
 				BBI.UWT.bbis.parts.showPartTitle();
 				BBI.UWT.bbis.parts.eventRegistration();
-				BBI.UWT.bbis.parts.documents();
+				BBI.UWT.bbis.parts.documents(); //responsible for the news release part 
 				BBI.UWT.bbis.smartMenus();
 				BBI.UWT.bbis.clone.sidebar();				
 			},
@@ -286,7 +286,14 @@ BBI = {
 							$('label[for$="DonationCapture1_cboMonth"]').closest('tr').removeClass('DonationCaptureRequiredFieldMarker');
 							$('td.DonationFieldControlCell:first-child').attr('width', '300'); //expands the first td in the radio button donation cells yaelsprikut
 							$('input[id$="PC3975_txtAmount"]').attr('style', 'width: 78px');
-							
+							$('input[id$="PC4143_txtAmount"]').attr('style', 'width: 100px');
+							var $URL = location.pathname;
+							if ($URL == '/wggdonate'){								
+									$('td.vaBottom').attr('style', 'color:black');								
+								}	
+							if($URL == '/makemygift'){
+									$('input[id$="PC4143_btnNext"]').attr('value', 'Submit Donation');
+							}
 							//attach new image to security code png
 							var oldSrc = 'images/help-32_1.gif';
 							var newSrc = 'https://test.unitedwaytoronto.org/image/mainwebsite/x_common/logos-and-icons/Question-mark-Icon-2.png';

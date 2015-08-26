@@ -87,13 +87,45 @@ BBI = {
 			commPreference: function() {
 				//hide Global Opt Out 
 				$('div[id *= "S1_GLOBALOPTOUTPREFERENCE_commPrefs_cont"]').hide();
-				$('input[id$="S1_GENERALCORRESPONDENCE_commPrefs_rptPrefs_cbOptIn_0"]').attr('style', '-webkit-transform: scale(2)');
+				$('input[id$="S1_GENERALCORRESPONDENCE_commPrefs_rptPrefs_cbOptIn_0"]').attr('style', '-webkit-transform: scale(2); -ms-transform: scale(2);-moz-transform: scale(2);');
+				$('input[id$="S1_APPEALPREFERENCE_M_600ed16ef3594bdf89d8f6b3b2bd5329_commPrefs_rptPrefs_cbOptIn_0"]').attr('style', '-webkit-transform: scale(2); -ms-transform: scale(2);-moz-transform: scale(2);');
 				$('div[id$="header"]').attr('style', 'padding-bottom: 30px; font-weight:bold');
 				
 				//check General checkbox if unchecked
 				if($("#S1_GENERALCORRESPONDENCE_commPrefs_rptPrefs_cbOptIn_0").prop('checked') == false){
 					document.getElementById("S1_GENERALCORRESPONDENCE_commPrefs_rptPrefs_cbOptIn_0").checked = true;
 				}
+				
+				$(window).resize(function(){
+					if ($(window).width() <= 800){	
+						//$('div[id$="Column1Div"]').remove();
+						$unsubscribeMe = $('span[id *= "S1_GENERALCORRESPONDENCE_commPrefs_rptPrefs_lblCommunication"]');
+						$yourAddress = $('span[id *= "S1_GENERALCORRESPONDENCE_commPrefs_rptPrefs_lblSendTo"]');
+						$unsubscribeMe.hide();
+						$yourAddress.hide();
+						
+						$labelA = $('label[for$="S1_GENERALCORRESPONDENCE_commPrefs_rptPrefs_cbOptIn_0"]');
+						$labelB = $('select[id$="S1_GENERALCORRESPONDENCE_commPrefs_rptPrefs_ddDeliveryMethod_0"]');
+						$submitBtn = $('input[id$="PC4005_ctl00_L_F1_W_finishWizardButton"]');
+						
+						$labelA.attr('style','position: relative;right: 25px;font-weight: bold;font-size: 13pt;');
+						$labelB.attr('style','position: relative;top: 35px;right: 402px;width: 120%;');
+						$submitBtn.attr('style', 'position: relative; top: 20px; right: 400px;font-size: large;');
+						
+						//DM comm preference
+						$labelC = $('label[for$="S1_APPEALPREFERENCE_M_600ed16ef3594bdf89d8f6b3b2bd5329_commPrefs_rptPrefs_cbOptIn_0"]');
+						$labelD = $('select[id$="S1_APPEALPREFERENCE_M_600ed16ef3594bdf89d8f6b3b2bd5329_commPrefs_rptPrefs_ddDeliveryMethod_0"]');
+						$submitBtnTwo = $('input[id$="PC4057_ctl00_L_F1_W_finishWizardButton"]');
+						
+						$labelC.attr('style','position: relative;right: 25px;font-weight: bold;font-size: 13pt;');
+						$labelD.attr('style','position: relative;top: 35px;right: 402px;width: 120%;');
+						$submitBtnTwo.attr('style', 'position: relative; top: 20px; right: 400px;font-size: large;');
+						var linebreak = document.createElement("br");
+						$('.bbformbuilder-form-part').append(linebreak);
+						
+						
+					}	
+				});
 				
 			},
 			administration: {
@@ -296,7 +328,7 @@ BBI = {
 							}
 							//attach new image to security code png
 							var oldSrc = 'images/help-32_1.gif';
-							var newSrc = 'https://test.unitedwaytoronto.org/image/mainwebsite/x_common/logos-and-icons/Question-mark-Icon-2.png';
+							var newSrc = 'http://test.unitedwaytoronto.org/image/mainwebsite/x_common/logos-and-icons/Question-mark-Icon-2.png';
 							$('img[src="' + oldSrc + '"]').attr('src', newSrc);
 							$('img[src="' + newSrc + '"]').attr('style', 'padding-top: 5px;border: 0;');
 							

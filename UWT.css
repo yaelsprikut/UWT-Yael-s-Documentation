@@ -77,7 +77,10 @@ meta.foundation-mq-xxlarge {
 
 html,
 body {
-  font-size: 100%; }
+  font-size: 100%;
+  overflow-x: hidden; 
+
+  }
 
 body {
   background: white;
@@ -5217,11 +5220,6 @@ th.hide-for-touch {
   position:relative;
   behavior: url(pie/PIE.htc);
 }
-
-.QuickSearchButton:hover{
-  background-color:#434648;
-}
-
 .QuickSearchFormTable td {
   padding:0;
   margin:0;
@@ -5342,6 +5340,10 @@ table.SearchTable tr.SearchOddRowStyle td.BBSearchDescriptionStyle {
 .DonationFormTable table {
   margin-bottom: 0;
 }
+
+  .vaBottom{ /*yaelsprikut makes amount disappear in desktop*/
+    color:white;
+  }
 /*Reduce padding between rows*/
 .DonationFormTable td,.DonationFormTable td table td {
   padding-top:0.5rem;
@@ -5917,10 +5919,6 @@ table[id*="tblMain"].EventTable {
    position:relative;
    behavior: url(pie/PIE.htc);
 }
-
-.BBSequenceMapNavigationButton:hover{/*yaelsprikut unsubscribe button*/
-  color:#5a9609;
-}
 /*Change look of the submit button*/
 .EventTable table[id$="Wizard1"] table td input.BBFormSubmitButton {  
   background-color: #de7c00;
@@ -5931,10 +5929,6 @@ table[id*="tblMain"].EventTable {
   border:1px solid #fff;
   border-radius:  0.5rem;
   cursor:pointer;
-}
-
-.EventTable table[id$="Wizard1"] table td input.BBFormSubmitButton:hover {/*yaelsprikut*/  
-  background-color: #c76f00;
 }
 /* change color on disabled yaelsprikut*/
 .EventTable table[id$="Wizard1"] table td input.BBFormSubmitButton:active,
@@ -6249,7 +6243,6 @@ table[id*="tblMain"].EventTable {
   .EventTable table[id$="Wizard1"] table td input.BBFormSubmitButton {  
     -webkit-appearance: none;
   }
-  
   /*Step 1 & Step 2: Increase width of ticket name area to accommodate long ticket names*/
   .EventTable td.EventItemRegistrationControlCellDescription,
   .landingcontent table.EventTable table[id*="dgPriceList"] table.w100p {  
@@ -6455,7 +6448,9 @@ span.infographic-blue {
   display:block;
   margin:3rem 0 1.5rem 0; 
   font-family: "Avenir LT W01 85 Heavy", Arial, "Helvetica Neue", Helvetica, sans-serif;
-  letter-spacing: -0.2rem; 
+  letter-spacing: -0.2rem;
+   color:#0072ce; 
+
 }
 p span.infographic-red {  
   font-size:6.5rem;
@@ -6947,7 +6942,7 @@ div.smallemail {
   background:#fff;
   width:80%;  
   margin:0 1rem 1rem 1rem;
-  /* padding:0.5rem; subscribe button fix yaelsprikut*/
+  padding:0.5rem;
   -webkit-border-radius: 5px; 
   -moz-border-radius: 5px; 
   border-radius: 5px; 
@@ -6998,8 +6993,10 @@ div:active.smallemail {
     .addthis-content {
       float:none; 
       margin-bottom:0.5rem;
-    } 
+    }
+	
   }
+  
 .register-now {
   font-size:1.3rem;
   font-weight:bold;
@@ -7513,11 +7510,6 @@ div.copyright {
 div.sidebar {
   padding-top:1rem !important;
 }
-
-
-
-
-
 #leftnav {
   margin-bottom:1rem;
 }
@@ -7770,7 +7762,74 @@ ul.sm ul.sm-nowrap > li > a {
 
   }
 
+/*DM Lapsed Donor Donation Page and Landing Page - LB 20Aug2015*/
+
+/*Section divider*/
+.blue-divider {
+background-color: #0072ce; 
+color: #fff;
+padding: 0.5rem;
+ font-size: 1.4rem;
+}
+
+/*Donate button on DM Lapsed Donor landing page*/
+div.btn-container {
+	text-align:center; 
+        margin-top:0.5rem;
+	margin-bottom:2rem;
+	clear:both;
+}
+a.btn-link {
+    color:#ffffff;
+	text-decoration:none; 
+	padding:0.5rem 4rem 0.5rem 4rem; 
+	border-radius:0.3rem; 
+	background-color:#64a70b; 
+	font-size:1.0rem;
+}
+a.btn-link:hover {
+    background-color:#558d0a; 
+    color:#ffffff !important;
+	text-decoration:none !important; 
+}
+a.btn-link:visited {
+    background-color:#64a70b; 
+    color:#ffffff !important;
+	text-decoration:none !important; 
+}
+a.btn-link:visited:hover {
+    background-color:#558d0a; 
+    color:#ffffff !important;
+	text-decoration:none !important; 
+}
+
+@media (max-width : 800px) /*yaelsprikut*/ {
+a.btn-link {
+    color:#ffffff;
+	text-decoration:none; 
+	padding:.5rem 2rem; 
+	border-radius:0.3rem; 
+	background-color:#64a70b; 
+	font-size:1.0rem;
+	position:relative;
+	}
+	
+.blue-divider {
+	position: relative;
+    top: 25px;
+}
+	
+}
+
+
+
+
+/*END DM Lapsed Donor Donation Page and Landing Page - LB 20Aug2015*/
+
+
 /*--END LANDING PAGE--*/
+
+
 
 /*--DETAILS PAGE--*/
 div.detailscontent {
